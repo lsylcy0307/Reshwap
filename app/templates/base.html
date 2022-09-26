@@ -1,0 +1,69 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="../static/style.css">
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../static/app.js"></script>
+        <link rel="stylesheet"
+        href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        {% if title %}
+        <title>{{ title }} - Reshwap</title>
+        {% else %}
+        <title>Welcome to Reshwap</title>
+        {% endif %}
+    </head>
+    <body>
+    <header>
+        <a href="{{ url_for('index', category='all')}}" class="logo">Reshwap</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="{{ url_for('index', category='all')}}">All</a></li>
+            <li><a href="{{ url_for('index', category='Furnitures')}}">Furnitures</a></li>
+            <li><a href="{{ url_for('index', category='Clothes')}}">Clothes/Shoes</a></li>
+            <li><a href="{{ url_for('index', category='Books')}}">Books</a></li>
+            <li><a href="{{ url_for('index', category='Foods')}}">Foods</a></li>
+        </ul>
+        <div class="icons">
+            <a href="/upload"><i class='bx bx-upload'></i></a>
+            <a href="/profile"><i class='bx bx-user-circle'></i></a>
+            <a href="/logout"><i class='bx bx-log-out-circle'></i></a>
+        </div>
+    </header>
+    <!-- <hr> -->
+
+    {% block content %}{% endblock %}
+
+    <!----about start--->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>About</h2>
+            <p>Reshwap is a trading website that allows students to sell their items to people in their own school.</p>
+            <p>2500 Main Street Lawrenceville, NJ</p>
+            <p>reshwap2019@gmail.com</p>
+        </div>
+    </section>
+    
+    <!----custom js link--->
+    <script >
+        let menu = document.querySelector('#menu-icon');
+        let navbar = document.querySelector('.navbar');
+
+        menu.onclick = () => {
+            menu.classList.toggle('bx-x');
+            navbar.classList.toggle('active');
+        };
+
+        window.onscroll = () => {
+            menu.classList.remove('bx-x');
+            navbar.classList.remove('active');
+        };
+    </script>
+</body>
+    
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="../static/style.css">
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../static/app.js"></script>
+        <link rel="stylesheet"
+        href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        {% if title %}
+        <title>{{ title }} - Reshwap</title>
+        {% else %}
+        <title>Welcome to Reshwap</title>
+        {% endif %}
+    </head>
+    <body>
+    <header>
+        <a href="#home" class="logo">Reshwap</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="#team">Team</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <div class="icons">
+            <a href="/login" >Log in</a>
+        </div>
+    </header>
+    <!-- <hr> -->
+
+    <section class="home" id="home">
+        <div class="content">
+            <h3> A new way to share.</h3>
+            <p>Reshwap connects you with items</p>
+    
+            <div class="center">
+                <a href="/login" class="index-btn">shop now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <div class="content">
+            <h3> Meet the Team </h3>
+            <p>In beginning: one guy named Max Drojjin '17. Then came front-end developer Eric Cheng '18 and back-end developer Matt Gunton '18 to carry the torch. Then, the torch passed onto Alper Canberk '21.</p>
+            <p> Now, the torch rests in the hands of Sally Lee '23. </p>
+            <p>Summer 2022 - Redesigned the entire website. </p>
+        </div>
+    </section>
+
+    <!----about start--->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>About</h2>
+            <p>Reshwap is a trading website that allows students to sell their items to people in their own school.</p>
+            <p>2500 Main Street Lawrenceville, NJ</p>
+            <p>reshwap2019@gmail.com</p>
+        </div>
+    </section>
+    
+    <!----custom js link--->
+    <script >
+        let menu = document.querySelector('#menu-icon');
+        let navbar = document.querySelector('.navbar');
+
+        menu.onclick = () => {
+            menu.classList.toggle('bx-x');
+            navbar.classList.toggle('active');
+        };
+
+        window.onscroll = () => {
+            menu.classList.remove('bx-x');
+            navbar.classList.remove('active');
+        };
+    </script>
+</body>
+    
+</html>

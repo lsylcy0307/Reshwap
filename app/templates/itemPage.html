@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="page">
+<div class="items_page_card">
+    <div class="item_page_image_container">
+
+        <input type="radio" name="images" id="i1" checked>
+        <input type="radio" name="images" id="i2">
+        <input type="radio" name="images" id="i3">
+
+        <div class="slide_img" id="one">
+            <img src={{img_url[0]}}>
+
+                <label for="i3" class="pre"></label>
+                <label for="i2" class="nxt"></label>
+        </div>
+
+        <div class="slide_img" id="two">
+            <img src={{img_url[1]}}>
+
+                <label for="i1" class="pre"></label>
+                <label for="i3" class="nxt"></label>
+        </div>
+        <div class="slide_img" id="three">
+            <img src={{img_url[2]}}>
+
+                <label for="i2" class="pre"></label>
+                <label for="i1" class="nxt"></label>
+        </div>
+
+        <div class="nav">
+            <label class="dots" id="dot1" for="i1"></label>
+            <label class="dots" id="dot2" for="i2"></label>
+            <label class="dots" id="dot3" for="i3"></label>
+        </div>
+    </div>
+
+    <div class="item_page_summary">
+        <div>
+            <h1>{{ item["item_name"] }}</h1>
+            <h1 class="item_price">$ {{ item["item_price"] }}</h1>
+        </div>
+        <div class="item_brief">
+            <p>Quality: {{item["item_quality"]}}</p>
+            <p>Item for trade: {{item["item_exchange"]}}</p>
+            <p>Negotiable: {{item["negotiable"]}}</p>
+            
+            {% if cur_user %}
+                {% if not sold %}
+                    <a class="item_pg_btn follow_btn"  href="{{ url_for('sold', itemid = item['id']) }}">
+                        <p>Mark sold</p>
+                    </a>
+                {% else %}
+                    <a class="item_pg_btn contact_btn"  href="{{ url_for('unsold', itemid = item['id']) }}">
+                        <p>Unmark sold</p>
+                    </a>
+                {% endif %}
+
+            {% endif %}
+        </div>
+    </div>
+    {% if not cur_user %}
+        <div class="item_page_btn_box">
+            {% if not cur_user %}
+                <button onclick="togglePopUp()" class="item_pg_btn contact_btn">Contact</button> 
+            {% endif %}
+
+            {% if not saved %}
+                <a class = "item_pg_btn save_btn" href="{{ url_for('saveitem', itemid = item['id']) }}">
+                    <p>Save</p>
+                </a>
+            {% else %}
+                <a class = "item_pg_btn save_btn" href="{{ url_for('saveitem', itemid = item['id']) }}">
+                    <p>Unsave</p>
+                </a>
+            {% endif %}
+            
+        </div>
+    {% endif %}
+</div>
+
+<div class="items_page_images_card">
+    {% for img in img_url%}
+    <div class="images_card_img">
+        <img class="item_img_small" src={{img}}>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="items_page_card">
+    <div class="items_page_desc_card">
+        <div class="items_page_desc_top">
+            <h3>Item description</p>
+        </div>
+        <div class="items_page_desc">
+            <p>{{item["item_description"]}}</p>
+        </div>
+        <div class="items_page_spec">
+            <div class="item_specifics">
+                <p>Category</p>
+                <p>{{item["item_category"]}}</p>
+            </div>
+            <div class="item_specifics">
+                <p>Exchange Item</p>
+                <p>{{item["item_exchange"]}}</p>
+            </div>
+            <div class="item_specifics">
+                <p>Price negotiable</p>
+                <p>{{item["negotiable"]}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="items_page_seller_card">
+        <div class="items_page_desc_top">
+            <h3>Seller info</p>
+        </div>
+
+        <p>{{itm_seller["name"]}}</p>
+        <p>{{itm_seller["email"]}}</p>
+        <p>Item {{itm_seller["number_of_items"]}}</p>
+
+        <div class="items_page_desc_main">
+            {% if not cur_user %}
+                {% if not following %}
+                    <a class="item_pg_btn follow_btn"  href="{{ url_for('follow', userid = itm_seller['user_id']) }}">
+                        <p>follow</p>
+                    </a>
+                {% else %}
+                    <a class="item_pg_btn follow_btn" href="{{ url_for('unfollow', userid = itm_seller['user_id']) }}">
+                        <p>unfollow</p>
+                    </a>
+                {% endif %}
+            {% endif %}
+            <div class="seller_itms_card">
+                {% for itm in seller_itm%}
+                <article class="item__box__small">
+                    <a href="{{ url_for('item', item_id = itm['id']) }}">
+                        <img class="item_img_small" src={{ itm['image_url'][0] }}>
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+            <a class="profile_button" href="{{ url_for('user', user_id = itm_seller['user_id']) }}">
+                <p>see {{itm_seller["number_of_items"]}} more items ></p>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<div class="popup" id="popup-1">
+    <div class="overlay"></div>
+    <div class="content">
+        <div class="close-btn" onclick="togglePopUp()">&times;</div>
+        <h1>Contact</h1>
+        <p>seller: {{itm_seller["name"]}}</p>
+        <p>email: {{itm_seller["email"]}}</p>
+        <a class = "item_pg_btn follow_btn" href="{{ url_for('sendContactEmail', email = itm_seller['email'], item_id = item['id']) }}">
+            <p>Contact</p>
+        </a>
+    </div>
+</div>
+</section>
+
+<script>
+    function togglePopUp(){
+        document.getElementById("popup-1").classList.toggle("active");
+    }
+</script> 
+    
+{% endblock %}

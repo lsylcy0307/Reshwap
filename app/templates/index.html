@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="page">
+<h1>{{category}}</h1>
+
+<div class="container" id="items_table">
+  {% for item in items%}
+      <div class="box">
+        <a class="item_page_link" href="{{ url_for('item', item_id = item['id']) }}">
+        <img src={{ item['image_url'][0] }}>
+        <h4>{{item["item_name"]}}</h4>
+        <h5>$ {{item["item_price"]}}</h5>
+        <div class="cart">
+					<a href="{{ url_for('saveitem', itemid = item['id']) }}"><i class='bx bx-heart'></i></a>
+				</div>
+        </a>
+      </div>
+    {% endfor %}
+
+    {% for item in sold_items%}
+      <div class="box">
+        <a class="item_page_link" href="{{ url_for('item', item_id = item['id']) }}">
+        <img class="item_img_sold" src={{ item['image_url'][0] }}>
+        <div class="item_info">
+            <h4>{{item["item_name"]}}</h4>
+            <h5>$ {{item["item_price"]}}</h5>
+        </div>
+        </a>
+      </div>
+    {% endfor %}
+</section>
+    
+{% endblock %}

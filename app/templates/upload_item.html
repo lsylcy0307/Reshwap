@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="page">
+<h2>Upload an Item</h2>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+  <label for="itm_name">Item name:</label><br>
+  <input type="text" id="itm_name" name="itm_name" required><br><br>
+
+  <label for="itm_category">Choose a category:</label><br>
+  <select name="itm_category" id="itm_category" required>
+    <option value="Furnitures">Furnitures</option>
+    <option value="Clothes">Clothes</option>
+    <option value="Books">Books</option>
+    <option value="Foods">Foods</option>
+    <option value="Others">Others</option>
+  </select><br><br>
+
+  <label for="itm_desc">Description:</label><br>
+  <textarea name="itm_desc" cols="50" rows="10" required></textarea><br><br>
+
+  <label for="itm_quality">Item Quality:</label><br>
+  <select name="itm_quality" id="itm_quality" required>
+    <option value="best">best</option>
+    <option value="mid">mid</option>
+    <option value="used">used</option>
+  </select><br><br>
+
+  <label for="itm_price">Price:</label><br>
+  <input type="number" id="itm_price" name="itm_price" value=0><br><br>
+
+  <label for="itm_exchange">Item for exchange:</label><br>
+  <input type="text" id="itm_exchange" name="itm_exchange" value="" ><br><br>
+
+  <label>Negotiable?</label><br>
+  <input type="radio" id="yes" name="negotiable" value="True">
+  <label for="yes">Yes</label><br>
+  <input type="radio" id="no" name="negotiable" value="False">
+  <label for="no">No</label><br><br>
+
+  <label for="avatar">Choose up to 3 pictures:</label><br>
+
+  <input type="file" id="itm_photo_1" name="itm_photo_1" required><br>
+  <input type="file" id="itm_photo_2" name="itm_photo_2"><br>
+  <input type="file" id="itm_photo_3" name="itm_photo_3"><br><br><br>
+
+  <!-- accept="image/png, image/jpeg"  -->
+  <input type="submit" id="buttonStyle" value="Submit">
+</form>
+</section>
+
+{% endblock %}

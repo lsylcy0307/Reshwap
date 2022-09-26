@@ -1,1 +1,1 @@
-web: gunicorn lvilleTrade:app
+web: gunicorn -w 4 'lvilleTrade:app'
