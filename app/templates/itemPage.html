@@ -57,6 +57,10 @@
                         <p>Unmark sold</p>
                     </a>
                 {% endif %}
+                <a class="item_pg_btn delete_btn"  href="{{ url_for('delete', itemid = item['id']) }}">
+                    <p>Delete Item</p>
+                </a>
+                
 
             {% endif %}
         </div>

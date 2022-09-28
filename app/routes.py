@@ -71,6 +71,7 @@ def index(category):
 
     all_items = []
     sold_items = []
+
     slc_category = "All Items"
 
     if category=="all":
@@ -94,7 +95,8 @@ def index(category):
     for item in all_items:
         image_url.append(item['image_url'][0])
 
-    print(image_url)
+    # print(image_url)
+    # print(sold_items)
 
     return render_template('index.html', title='Home', items = all_items, sold_items = sold_items, img_url=image_url, category=slc_category)
 
@@ -242,6 +244,25 @@ def unsold(itemid):
     return redirect(url_for('profile'))
 
 
+@app.route('/delete/<itemid>')
+def delete(itemid):
+    doc = items_ref.document(itemid)
+    doc.delete()
+
+
+    for user in users_ref.stream():
+        user = user.to_dict()
+        saved = user["saved_items"]
+        if itemid in saved:
+            saved.remove(itemid)
+            user["saved_items"] = saved
+
+        users_ref.document(user["user_id"]).update(user)
+
+    return redirect(url_for('profile'))
+
+
+
 @app.route('/sendContactEmail/<email>/<item_id>')
 def sendContactEmail(email, item_id):
 
@@ -363,6 +384,7 @@ def profile():
 
     saved_items = []
     saved_items_id = cur_user["saved_items"]
+
     for item in saved_items_id:
         found_item = items_ref.where("id","==", item).get()
         saved_items.append(found_item[0].to_dict())

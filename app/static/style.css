@@ -390,9 +390,19 @@ body{
     border: 2px solid #ffa200;
     border-radius: 10px;
   }
-  
   .contact_btn:hover {
     background-color: #ffa200;
+    color: white;
+  }
+
+  .delete_btn {
+    background-color: white; 
+    color: black; 
+    border: 2px solid red;
+    border-radius: 10px;
+  }
+  .delete_btn:hover {
+    background-color: red;
     color: white;
   }
 
