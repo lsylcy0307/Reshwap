@@ -554,7 +554,7 @@ body{
 header{
   position: fixed;
   top:0; left:0; right:0;
-  background:#fff;
+  background:#b24843;
   padding:2rem 9%;
   display: flex;
   align-items: center;
@@ -582,7 +582,7 @@ header .logo{
 }
 .navbar a{
 	font-size: var(--p-font);
-	color: var(--text-color);
+	color: white;
 	font-weight: 400;
 	padding: 10px 15px;
 	margin: 0 10px;
@@ -590,7 +590,7 @@ header .logo{
 }
 .navbar a:hover{
 	background: var(--text-color);
-	color: #fff;
+	color: #333;
 }
 
 header .icons a{
@@ -658,6 +658,7 @@ header .icons a:hover{
 	}
 
 	header{
+
 		padding: 10% 8%;
 	}
 
@@ -679,7 +680,10 @@ header .icons a:hover{
     font-size: 50px;
 		display: block;
 		padding: 1rem;
+    color: #333;
 	}
+
+  
 	.navbar.active{
 		top: 100%;
 	}
