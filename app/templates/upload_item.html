@@ -3,9 +3,9 @@
 {% block content %}
 
 <section class="page">
-<h2>Upload an Item</h2>
+<h1 id="page_title">Upload an Item</h2>
 
-<form action="/upload" method="post" enctype="multipart/form-data">
+<form id="upload_form" action="/upload" method="post" enctype="multipart/form-data">
   <label for="itm_name">Item name:</label><br>
   <input type="text" id="itm_name" name="itm_name" required><br><br>
 

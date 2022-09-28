@@ -3,7 +3,7 @@
 {% block content %}
 
 <section class="page">
-<h1>Profile</h2>
+<h1 id="page_title">Profile</h2>
 
 <div class="profile_container"> 
   <button id="buttonStyle" onclick="getAllItems()" >My Items</button>
@@ -11,7 +11,7 @@
   <button id="buttonStyle" onclick="getSoldItems()" >Sold</button>
 </div>
 
-<h1 id="item_title">All Items</h1>
+<h1 id="page_title">All Items</h1>
 
 <div class="container" id="saved_items_table">
   {% for item in saved_items %}
