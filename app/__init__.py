@@ -9,7 +9,6 @@ app.config.from_object(Config)
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'lvillereshwap@gmail.com'
-app.config['MAIL_PASSWORD'] = 'rqmhlktqoykoahhx'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
