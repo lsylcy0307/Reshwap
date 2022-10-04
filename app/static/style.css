@@ -387,22 +387,23 @@ body{
   .contact_btn {
     background-color: white; 
     color: black; 
-    border: 2px solid #ffa200;
+    border: 2px solid #db4040;
     border-radius: 10px;
   }
   .contact_btn:hover {
-    background-color: #ffa200;
+    background-color: #db4040;
     color: white;
   }
 
   .delete_btn {
     background-color: white; 
     color: black; 
-    border: 2px solid red;
+    padding: 0 10px;
+    border: 2px solid #db4040;
     border-radius: 10px;
   }
   .delete_btn:hover {
-    background-color: red;
+    background-color: #db4040;
     color: white;
   }
 
@@ -554,7 +555,7 @@ body{
 header{
   position: fixed;
   top:0; left:0; right:0;
-  background:#b24843;
+  background:#bf4b45;
   padding:2rem 9%;
   display: flex;
   align-items: center;
@@ -632,7 +633,7 @@ header .icons a:hover{
 }
 
 .index-btn{
-  background-color: #ff5858;
+  background-color: #db4040;
   color: #fff;
   cursor: pointer;
   padding: 0.9em 1.5em;

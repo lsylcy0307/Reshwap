@@ -249,7 +249,6 @@ def delete(itemid):
     doc = items_ref.document(itemid)
     doc.delete()
 
-
     for user in users_ref.stream():
         user = user.to_dict()
         saved = user["saved_items"]
@@ -261,6 +260,14 @@ def delete(itemid):
 
     return redirect(url_for('profile'))
 
+
+@app.route('/edit/<itemid>')
+def edit(itemid):
+    doc = items_ref.document(itemid)
+
+    
+
+    return redirect(url_for('profile'))
 
 
 @app.route('/sendContactEmail/<email>/<item_id>')
