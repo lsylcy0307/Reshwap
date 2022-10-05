@@ -43,10 +43,6 @@ db = firestore.client()
 users_ref = db.collection('users')
 items_ref = db.collection('items')
 
-s3_accessKey='AKIA2QYVIRBAO2SLB3X4'
-s3_accessSecret='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'
-s3_bucketName='reswhap-imgs'
-
 client_s3 = boto3.client(
     's3',
     aws_access_key_id=s3_accessKey,
